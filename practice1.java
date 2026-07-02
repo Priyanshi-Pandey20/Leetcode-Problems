@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.Arrays;
 public class practice1 {
-    public int majorityElement(int[] nums){
+    public int majorityElement(int[] nums){ // O(N2)
         int n = nums.length;
         for(int i = 0;i<n;i++){
             int freq = 0;
@@ -19,7 +19,7 @@ public class practice1 {
         return -1;
     }
 
-    public int majorityElement1(int[] nums){
+    public int majorityElement1(int[] nums){ //O(LOGN)
         Arrays.sort(nums);
         int n = nums.length;
         int freq = 1,ans = nums[0];
@@ -41,7 +41,7 @@ public class practice1 {
 
     }
 
-    public int mooreVotingAlgo(int[] nums){
+    public int mooreVotingAlgo(int[] nums){ //O(N)
         int freq = 0,ans = 0;
         int n = nums.length;
         for(int i = 0;i<n;i++){
@@ -53,14 +53,25 @@ public class practice1 {
             }else{
                 freq--;
             }
+        }
+        int count = 0;
+        for(int val = 0;val<n;val++){
+            if(val == ans){
+                count++;
+            }
 
         }
-        return ans;
+        if(count > n/2){
+            return ans;
+        }else{
+            return -1;
+        }
+        
     }
      
 
 public static void main(String[] args){
-    int[] nums = {2,2,1,1,1,2,2};
+    int[] nums = {1,2,3,4};
     practice1 obj = new practice1();
     int ans = obj.mooreVotingAlgo(nums);
     System.err.println(ans);
