@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.Arrays;
 public class practice1 {
     public int majorityElement(int[] nums){ // O(N2)
         int n = nums.length;
@@ -68,13 +67,34 @@ public class practice1 {
         }
         
     }
-     
 
+    public int[] findMissingAndRepeatedValues(int[][] grid){
+        List<Integer> ans = new ArrayList<>();
+        Set<Integer> set = new HashSet<>();
+        int n = grid.length;
+        int a = -1, b= -1;
+        int actualSum = 0, expSum = 0;
+
+        for(int i = 0;i<n;i++){
+            for(int j = 0;j<n;j++){
+                actualSum += grid[i][j];
+
+                if(set.contains(grid[i][j])){
+                    a = grid[i][j];
+                }
+                set.add(grid[i][j]);
+            }
+        }
+        expSum = (n * n) * (n * n + 1)/2;
+        b = expSum + a - actualSum;
+        return new int[] {a,b};
+    }
 public static void main(String[] args){
-    int[] nums = {1,2,3,4};
+    int[][] nums =  {{9,1,7},{8,9,2},{3,4,6}};
     practice1 obj = new practice1();
-    int ans = obj.mooreVotingAlgo(nums);
-    System.err.println(ans);
+    int[] ans = obj.findMissingAndRepeatedValues(nums);
+    System.out.println(ans[0]+ " "+ ans[1]);
+    
 
 
 
