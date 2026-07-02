@@ -69,7 +69,6 @@ public class practice1 {
     }
 
     public int[] findMissingAndRepeatedValues(int[][] grid){
-        List<Integer> ans = new ArrayList<>();
         Set<Integer> set = new HashSet<>();
         int n = grid.length;
         int a = -1, b= -1;
@@ -89,15 +88,29 @@ public class practice1 {
         b = expSum + a - actualSum;
         return new int[] {a,b};
     }
+
+    public void mergeSort(int[] nums1,int m , int[] nums2, int n){
+        int idx = m + n -1, i = m-1,j = n-1;
+        while(i >= 0 && j >= 0){
+            if(nums1[i] >= nums2[j]){
+                nums1[idx--] = nums1[i--];
+             
+            }else{
+                nums1[idx--] = nums2[j--];
+                
+            }
+        }
+        while( j>=0){
+            nums1[idx--] = nums2[j--];
+        }
+    }
 public static void main(String[] args){
-    int[][] nums =  {{9,1,7},{8,9,2},{3,4,6}};
+    int[] nums1 =  {1,2,3,0,0,0};
+    int[] nums2 = {2,5,6};
+    int n = 3, m=3;
     practice1 obj = new practice1();
-    int[] ans = obj.findMissingAndRepeatedValues(nums);
-    System.out.println(ans[0]+ " "+ ans[1]);
-    
-
-
-
+    obj.mergeSort(nums1,m,nums2,n);
+    System.out.println(Arrays.toString(nums1));
 }
 }
 
