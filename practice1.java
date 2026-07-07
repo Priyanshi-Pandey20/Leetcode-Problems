@@ -123,15 +123,31 @@ public class practice1 {
         return ans;
     }
 
-    
+     public int maxSubarray(int[] nums){
+        int currSum = 0,maxSum = Integer.MIN_VALUE;
+
+        for(int i = 0;i < nums.length;i++){
+            currSum += nums[i];
+            maxSum = Math.max(currSum, maxSum);
+
+            if(currSum < 0){
+                currSum = 0;
+            }
+
+        }
+        return maxSum;
+
+     }
+
+
 
     public static void main(String[] args) {
-        // int[] nums1 = { 1, 2, 3, 0, 0, 0 };
+        int[] nums = {5,4,-1,7,8};
         // int[] nums2 = { 2, 5, 6 };
         // int n = 3, m = 3;
         double x = 2.00000; int n = 10;
         practice1 obj = new practice1();
-        System.err.println(obj.myPow(x,n));
+        System.err.println(obj.maxSubarray(nums));
         
     }
 }
