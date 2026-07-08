@@ -139,15 +139,29 @@ public class practice1 {
 
      }
 
+     public int maxArea(int[] height){  //TLE Brute-Force-Approach
+            int maxWater = 0;
+            for(int i = 0;i<height.length;i++){
+                for(int j = i+1;j<height.length;j++){
+                    int wt = j-i;
+                    int ht = Math.min(height[i],height[j]);
+                    int area = wt*ht;
+
+                    maxWater = Math.max(maxWater,area);
+                }
+            }
+            return maxWater;
+     }
+
+    
+
+    
 
 
     public static void main(String[] args) {
-        int[] nums = {5,4,-1,7,8};
-        // int[] nums2 = { 2, 5, 6 };
-        // int n = 3, m = 3;
-        double x = 2.00000; int n = 10;
+         int[] height = {1,1};
         practice1 obj = new practice1();
-        System.err.println(obj.maxSubarray(nums));
+        System.err.println(obj.maxArea(height));
         
     }
 }
