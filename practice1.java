@@ -155,7 +155,7 @@ public class practice1 {
 
     public int maxArea1(int[] height) {
         int n = height.length;
-        int lp = 0, rp = n - 1, ans = 0, maxWater = 0;
+        int lp = 0, rp = n - 1, maxWater = 0;
         while (lp < rp) {
             int w = rp - lp;
             int ht = Math.min(height[lp], height[rp]);
@@ -167,15 +167,43 @@ public class practice1 {
             } else {
                 rp--;
             }
-
         }
         return maxWater;
     }
 
+    public void sortColors(int[] nums) {
+    int n = nums.length;
+    int low = 0, mid = 0, high = n - 1;
+
+    while (mid <= high) {
+        if (nums[mid] == 0) {
+            swap(nums, low, mid);
+            low++;
+            mid++;
+        } else if (nums[mid] == 1) {
+            mid++;
+        } else {
+            swap(nums, mid, high);
+            high--;
+        }
+    }
+}
+  public void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
     public static void main(String[] args) {
-        int[] height = { 1, 1 };
+        int[] nums = {2, 0, 2, 1, 1, 0};
+
         practice1 obj = new practice1();
-        System.err.println(obj.maxArea1(height));
+        obj.sortColors(nums);
+
+        for (int num : nums) {
+            System.out.print(num + " ");
+        }
+    
 
     }
 }
